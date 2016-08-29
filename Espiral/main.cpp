@@ -2,87 +2,91 @@
 
 using namespace std;
 
-int a,b,c,d,i,j,k,dir=0;
+int a,ja,ia,l,d,mov1,mov2,dim,c,i,j,k,dir=0;
 int Spiral[5][5];
 
 int main()
-{a=1;
-    b=5;
-    k=5;
+{   cout<<"*** PROBLEMA 15 ***"<<endl;
+    cout<<"INGRESE UN NUMERO IMPAR, PARA GENERAR MATRIZ N*N: ";
+    cin>>dim;
+    cout<<"//--//--//--//--//--//--//--//--//--//--//--//--//--//--//"<<endl;
+    cout<<"--//--//--//--//--//--//--//--//--//--//--//--//--//--//--"<<endl<<endl;
+    int Spiral[dim][dim];
+    a=dim*dim;
+    ja=dim-1;
+    d=ja;
+    mov2=d;
+    l=0;
+    ia=1;
+    mov1=l;
     dir=0;
-    while(!c){
+    while(!c)
+    {
         switch (dir) {
         case 0: //derecha izquierda
 
-            for(j=4;j>=0;j--)
-            {cout<<a;
-                Spiral[0][j]=a;
-                a++;
+            for(j=ja;j>=l;j--)
+            {
+                Spiral[mov1][j]=a;
+                a--;
 
             }
-            k--;
-            //d++;
             dir=1;
-            cout<<endl<<"salgo de dir0-- ahora dir tiene: "<<dir<<endl;
+            l++;
+
 
             break;
         case 1: //arriba abajo
-            cout<<"entro en dir=1"<<endl;
-            for(i=1;i<=4;i++)
-            {
-                cout<<a;
-                Spiral[i][0]=a;
-                a++;
 
+            for(i=ia;i<=d;i++)
+            {
+                Spiral[i][mov1]=a;
+                a--;
             }
-            k--;
-           // i++;
             dir=2;
-            cout<<endl<<"salgo de dir1-- ahora dir tiene: "<<dir<<endl;
+            d--;
+            mov1++;
+
             break;
         case 2: //izquierda derecha
 
-            cout<<"entro en dir=2"<<endl;
-            for(j=1;j<=4;j++)
+            for(j=l;j<=ja;j++)
             {
-                cout<<a;
-                Spiral[4][j]=a;
-                a++;
-
+                Spiral[mov2][j]=a;
+                a--;
             }
-            k--;
-           // i++;
             dir=3;
-            cout<<endl<<"salgo de dir2-- ahora dir tiene: "<<dir<<endl;
+            ja--;
+
             break;
 
         case 3: //abajo arriba
 
-            cout<<"entro en dir=3"<<endl;
-            for(i=3;i>=1;i--)
+            for(i=d;i>=ia;i--)
             {
-                cout<<a;
-                Spiral[i][4]=a;
-                a++;
-
+                Spiral[i][mov2]=a;
+                a--;
             }
-            k--;
-           // i++;
-            dir=4;
-            cout<<endl<<"salgo de dir3-- ahora dir tiene: "<<dir<<endl;
+            dir=0;
+            ia++;
+            mov2--;
+
             break;
         case 4: //abajo arriba
-            for(i=0;i<b;i++)
+            for(i=0;i<dim;i++)
             {
-                for(j=0;j<b;j++)
-                {
+                for(j=0;j<dim;j++)
+                {   if(Spiral[i][j]<10)cout<<" ";
                     cout<<Spiral[i][j]<<"  ";
                 }
                 cout<<endl;
             }
-            c=1;
+            cout<<endl<<"//--//--//--//--//--//--//--//--//--//--//--//--//--//--//"<<endl;
+            cout<<"--//--//--//--//--//--//--//--//--//--//--//--//--//--//--"<<endl;
+            c=1; //exit while..
             break;
         }
+        if(a<1)dir=4;
 
     }
 
