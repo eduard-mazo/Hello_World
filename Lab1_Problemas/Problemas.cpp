@@ -4,9 +4,10 @@
 using namespace std;
 int fac(int);
 int elevar(int, int);
+int collatz(int, int *);
 
 long int x;
-int temp,a,b,c,d,e,n,i,j,y,z,w,count,count2,min1,hor1,min2,hor2=0;
+int temp,a,b,c,d,e,n,i,j,y,z,w,count,count2,min1,hor1,min2,hor2,ptr=0;
 int arra[10]={50000,20000,10000,5000,2000,1000,500,200,100,50};
 int arra2[20];
 int arra3[20];
@@ -353,6 +354,39 @@ int main()
 
         break;
 
+    case 10:
+        cout<<"PROBLEMA #16"<<endl;
+        cout<<"SERIE DE COLLATZ"<<endl;
+        cin>>a;
+        j=a-1;
+        a=j;
+
+        while(!c)
+        {if(a!=1)
+            {
+                a=collatz(a,&ptr);
+
+            }
+            else
+            {cout<<endl<<"------------"<<endl;
+                if(ptr>d)
+                {
+                    d=ptr;
+                    w=j;
+                }
+                ptr=0;
+                j--;
+                a=j;
+                if(a==1)c=1;
+            }
+        }
+
+        cout<<endl<<"TERMINAMOS, LA SERIE MAS GRANDE FUE: "<<d<<" CON LA SEMILLA: "<<w<<endl;
+        while(w!=1){
+        w=collatz(w,&ptr);
+        }
+        break;
+
     }
 
 
@@ -375,4 +409,23 @@ int fac(int m)// Funcion que me retorna el Factorial del numero solicitado
     }
 
     return n;
+}
+
+int collatz(int coll, int *pt)
+{
+    if(coll%2)
+    {
+
+        cout<<"impar "<<coll<<endl;
+        coll=(3*coll)+1;
+
+        *pt+=1;
+    }
+    else
+    {
+        cout<<"par "<<coll<<endl;
+        coll/=2;
+        *pt+=1;
+    }
+    return coll;
 }
