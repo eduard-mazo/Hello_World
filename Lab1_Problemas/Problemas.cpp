@@ -7,18 +7,21 @@ int elevar(int, int);
 int collatz(int, int *);
 
 long int x;
-int temp,a,b,c,d,e,n,i,j,y,z,w,count,count2,min1,hor1,min2,hor2,ptr=0;
+int temp,temp2,a,b,c,d,e,n,i,j,y,z,w,count,count2,min1,hor1,min2,hor2,ptr=0;
+int ja,ia,l,mov1,mov2,dim,k,dir,sum=0;
 int arra[10]={50000,20000,10000,5000,2000,1000,500,200,100,50};
 int arra2[20];
 int arra3[20];
 int arra4[20];
+int array1[20];
 
 long int arra5[]={};
 int main()
 {cout<<"SELECCIONE EJERCICIOS "<<endl<<"-----------------"<<endl<<"#0  -- PROBLEMA #2"<<endl<<"#1  -- PROBLEMA #3"<<endl;
     cout<<"#2  -- PROBLEMA #4"<<endl<<"#3  -- PROBLEMA #5"<<endl<<"#4  -- PROBLEMA #6"<<endl;
     cout<<"#5  -- PROBLEMA #7"<<endl<<"#6  -- PROBLEMA #8"<<endl<<"#7  -- PROBLEMA #9"<<endl;
-    cout<<"#8  -- PROBLEMA #10"<<endl<<"#10 -- PROBLEMA #16"<<endl;
+    cout<<"#8  -- PROBLEMA #10"<<endl<<"#9 -- PROBLEMA #14"<<endl<<"#10 -- PROBLEMA #16"<<endl<<"#11 -- PROBLEMA #13"<<endl;
+    cout<<"#12  -- PROBLEMA #15"<<endl;
     cin>>temp;
     
     switch(temp){
@@ -341,7 +344,7 @@ int main()
             if(n==2)a--;// Disminuye contador cuando es primo
             e=c;//alamceno el Primo hayado
             n=0;//Restauro contador
-            c+=1;
+            c+=1; // Aumento contador para buscar proximo primo
             if(a==0)b=1;//termina programa cuando encuentra el Nsimo Primo
             
         }
@@ -349,23 +352,63 @@ int main()
         break;
         
     case 9:
-        cout<<"PROBLEMA #11"<<endl;
-        cout<<"ENESIMO PRIMO"<<endl;
-        
+        cout<<"PROBLEMA #14"<<endl;
+        cout<<"CALCULAR PALINDROMO MAS GRANDE"<<endl;
+
+
+        //DETERMINO CIFRAS DEL NUMERO INGRESADO Y ALMACENO EN MEMORIA UNIDADES, DECENAS... ETC
+        for(i=1;i<=999;i++) //ciclo FOR para generar numero de 0-999
+        {
+            for(j=1;j<=999;j++) //Con este For genero el siguiente numero de 3 cifras
+            {
+                n=i*j;
+                w=n;
+
+                while(n!=0)
+                {
+                    temp2=n;
+                    n /= 10;
+                    ++count;
+                    temp2%=10;
+                    array1[count]=temp2;
+                }
+
+                for(y=1;y<=count;++y)
+                {
+                    if((array1[y])==array1[((count+1)-y)])
+                    {
+                        count2++;\
+                    }
+
+                }
+
+                if(count2==count)// Si el numero es palindromo se va almacenando en esta variable
+                {
+                    b++;
+                    if(w>a)a=w;
+                }
+                //inicio contadores
+                count=0;
+                count2=0;
+            }
+        }
+
+        cout<<endl<<"EL PALINDROMO MAS GRANDE ES: "<<a<<endl;
+        cout<<endl<<"NUMERO TOTAL DE PALINDROMOS: "<<b<<endl;
         break;
-        
+
     case 10:
         cout<<"PROBLEMA #16"<<endl;
         cout<<"SERIE DE COLLATZ"<<endl;
         cin>>a;
         j=a-1;
         a=j;
-        
+
         while(!c)
         {if(a!=1)
             {
                 a=collatz(a,&ptr);
-                
+
             }
             else
             {cout<<endl<<"------------"<<endl;
@@ -380,16 +423,132 @@ int main()
                 if(a==1)c=1;
             }
         }
-        
+
         cout<<endl<<"TERMINAMOS, LA SERIE MAS GRANDE FUE: "<<d<<" CON LA SEMILLA: "<<w<<endl;
         while(w!=1){
             w=collatz(w,&ptr);
         }
         break;
-        
+    case 11:
+        cout<<endl<<"PROBLEMA #13"<<endl;
+        cout<<"SUMA DE NUMEROS PRIMOS"<<endl;
+        cin>>a;
+        while(!b)
+        {
+            for(i=1;i<(c+1);i++){
+                if(c%i==0)n++;
+            }
+            if(n==2)
+            {
+                if(c<a)e+=c;//alamceno el Primo hayado
+                else b=1;
+            }
+            n=0;//Restauro contador
+            c+=1; // Aumento contador para buscar proximo primo
+        }
+        cout<<endl<<"SUMA DE NUMEROS PRIMOS HASTA "<<a<<" ES: "<<e<<endl;
+        break;
+
+    case 12:
+            cout<<"*** PROBLEMA 15 ***"<<endl;
+            cout<<"INGRESE UN NUMERO IMPAR, PARA GENERAR MATRIZ N*N: ";
+            cin>>dim;
+            k=dim;
+            k/=2;
+            if(k==0)
+            {
+                c=1;        // condicion que me permite verificar si el # es PAR o IMPAR
+                cout<<endl<<"INGRESASTE UN # PAR -.-"<<endl;
+            }
+            int Spiral[dim][dim]; // Determino el tamano que mi matriz va a tener
+            a=dim*dim;  // Inicia mi contador descendente, adquiere el valor maximo de la matriz n*n
+            ja=dim-1; // variable que me permite controlar el inicio en izq y el final en der de los ciclos for respectivos
+            d=ja; // variable que me permite controlar el inicio en up y el final en down de los ciclos for respectivos
+            mov2=d; // variable que controla el apuntador i en der y j en up
+            l=0; // variable que me permite controlar el inicio en izq y el final en der de los ciclos for respectivos
+            ia=1; // variable que me permite controlar el inicio en down y el final en up de los ciclos for respectivos
+            mov1=l; // apuntador i en izq y j en down
+            dir=0; // selector
+            sum+=a; // inicio la suma con el mayor valor
+            while(!c)
+            {
+                switch (dir) {
+                case 0: //derecha izquierda
+
+
+                    for(j=ja;j>=l;j--)
+                    {
+                        Spiral[mov1][j]=a;
+                        a--;
+                    }
+                    sum+=(a+1);// sumo la esquina superior izq
+                    dir=1;
+                    l++;
+                    break;
+                case 1: //arriba abajo
+
+                    for(i=ia;i<=d;i++)
+                    {
+                        Spiral[i][mov1]=a;
+                        a--;
+                    }
+                    sum+=(a+1); // sumo esquina inferior izq
+                    dir=2;
+                    d--;
+                    mov1++;
+                    break;
+                case 2: //izquierda derecha
+
+                    for(j=l;j<=ja;j++)
+                    {
+                        Spiral[mov2][j]=a;
+                        a--;
+                    }
+                    sum+=(a+1); // sumo esquina inferior der
+                    dir=3;
+                    ja--;
+                    break;
+
+                case 3: //abajo arriba
+
+                    for(i=d;i>=ia;i--)
+                    {
+                        Spiral[i][mov2]=a;
+                        a--;
+                    }
+                    sum+=(a); // sumo esquina superior der
+                    dir=0;
+                    ia++;
+                    mov2--;
+                    break;
+                case 4: // Case para Imprimir en pantalla
+
+                    cout<<"//--//--//--//--//--//--//--//--//--//--//--//--//--//--//"<<endl;
+                    cout<<"--//--//--//--//--//--//--//--//--//--//--//--//--//--//--"<<endl<<endl;
+                    for(i=0;i<dim;i++)
+                    {
+                        for(j=0;j<dim;j++)
+                        {   if(Spiral[i][j]<10)cout<<" "; // Condiciones para que la matriz se vea bonita
+                            if(Spiral[i][j]<100)cout<<" ";
+                            cout<<Spiral[i][j]<<"  ";// Imprime en pantalla los valores almacenados en la matriz
+                        }                            // de tal forma que se logre el efecto deseado.
+                        cout<<endl;
+                    }
+                    cout<<endl<<"LA SUMA DE LAS DIAGONALES ES: "<<(sum-1)<<endl;
+                    cout<<endl<<"//--//--//--//--//--//--//--//--//--//--//--//--//--//--//"<<endl;
+                    cout<<"--//--//--//--//--//--//--//--//--//--//--//--//--//--//--"<<endl;
+                    c=1; //exit while..
+                    break;
+                }
+                if(a<1)dir=4;
+
+            }
+
+        break;
+
     }
-    
-    
+
+
 }
 
 int elevar(int B,int P)// Funcion para elevar B^P
@@ -397,7 +556,7 @@ int elevar(int B,int P)// Funcion para elevar B^P
     int res=1;
     for (int a=0;a<P;++a)
         res*=B;
-    
+
     return res;
 }
 
@@ -407,7 +566,7 @@ int fac(int m)// Funcion que me retorna el Factorial del numero solicitado
     {
         n*=i;
     }
-    
+
     return n;
 }
 
@@ -415,10 +574,10 @@ int collatz(int coll, int *pt)
 {
     if(coll%2)
     {
-        
+
         cout<<"impar "<<coll<<endl;
         coll=(3*coll)+1;
-        
+
         *pt+=1;
     }
     else
