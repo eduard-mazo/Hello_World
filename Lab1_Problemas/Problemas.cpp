@@ -18,9 +18,9 @@ int main()
 {cout<<"SELECCIONE EJERCICIOS "<<endl<<"-----------------"<<endl<<"#0  -- PROBLEMA #2"<<endl<<"#1  -- PROBLEMA #3"<<endl;
     cout<<"#2  -- PROBLEMA #4"<<endl<<"#3  -- PROBLEMA #5"<<endl<<"#4  -- PROBLEMA #6"<<endl;
     cout<<"#5  -- PROBLEMA #7"<<endl<<"#6  -- PROBLEMA #8"<<endl<<"#7  -- PROBLEMA #9"<<endl;
-    cout<<"#8  -- PROBLEMA #10"<<endl;
+    cout<<"#8  -- PROBLEMA #10"<<endl<<"#10 -- PROBLEMA #16"<<endl;
     cin>>temp;
-
+    
     switch(temp){
     case 0:
         cout<<"PROBLEMA #2"<<endl;
@@ -33,17 +33,17 @@ int main()
                 i--;
                 //cin.ignore().get(); //Pause Command for Linux Terminal
             }
-
+            
         }
-
+        
         for(i=0;i<=9;i++){
             cout<<arra[i]<<"-->"<<arra2[i]<<endl;// imprimo billetes y cantidad usada
-
+            
         }
         cout<<"LO QUE RESTA: "<<a<<endl;
-
+        
         break;
-
+        
     case 1:
         cout<<"PROBLEMA #3"<<endl;
         cout<<"INGRESE UN MES: ";
@@ -59,36 +59,36 @@ int main()
             {if(b>30)cout<<"FECHA INVALIDA "<<b<<"/"<<a<<endl;//Condicion para Febrero, bisiesto o no!
                 if(b==29)cout<<"POSIBLE BISIESTO "<<b<<"/"<<a<<endl;
                 else  cout<<"FECHA VALIDA "<<b<<"/"<<a<<endl;
-
+                
             }
-
+            
             if((a==4)||(a==6)||(a==9)||(a==11)){ // Condicion para meses de 30 dias
                 if(b>30)cout<<"FECHA INVALIDA "<<b<<"/"<<a<<endl;
                 else cout<<"FECHA VALIDA "<<b<<"/"<<a<<endl;
             }
-
+            
         }else cout<<"FECHA INVALIDA "<<b<<"/"<<a<<endl;
-
+        
         break;
-
+        
     case 2:
         cout<<"PROBLEMA #4"<<endl;
         cout<<"HORA 1: ";
         cin>>a;
         if(a<999){count++;
             d=1;}
-
+        
         while(a!=0)//Con el while obtenemos las unidades y podemos separa en cifras
         {
             c=a;
             a /= 10;
-
+            
             c%=10;
             if(d)arra2[count-1]=c;
             else arra2[count]=c;
             count++;
         }
-
+        
         cout<<endl<<"HORA 2: ";
         cin>>b;
         c=0;
@@ -150,65 +150,65 @@ int main()
             {
                 min1=n;
             }
-
+            
             y=hor1+hor2;
-
+            
             if(y<24) // Siempre y cuando tenga una hora menor a 24
             {
                 cout<<"LA HORA ES: "<<y<<":"<<min1<<endl;
                 if(z!=0)y+=z;
             }
             else cout<<endl<<"HORA INCORRECTA"<<endl;
-
-
+            
+            
         }
         else cout<<endl<<"HORA INCORRECTA"<<endl;
-
-
+        
+        
         break;
     case 3:
-
+        
         cout<<"PROBLEMA #5"<<endl;
         cout<<"PIRAMIDE"<<endl;
-
+        
         cout<<"INGRESE UN # IMPAR: ";
         cin>>a;
         if((a%2)==0)cout<<endl<<"NUMERO IVALIDO (PAR)"<<endl;
         else {cout<<endl<<"NUMERO CORRECTO (IMPAR)"<<endl<<endl;
-
+            
             a/=2;
-
+            
             for (int i = 0; i <=a; i++) {//Ciclo for que imprime parte superior de la piramide
-
+                
                 for (int j = 0; j <(a-i); j++) {//rellena espacios en blanco para ubicar el puntero
                     cout << ' ';
-
+                    
                 }
-
+                
                 for (int j = (a-i); j<=a+i ; j++) {//desde la ubicacion del puntero ingresa * para darle forma a la piramide
                     cout << "*";
                 }
-
-
+                
+                
                 cout << '\n';
             }
             for (int i = a-1; i >=0; i--) {// ciclo for que hace lo mismo que el anterior solo que en forma inversa
-
+                
                 for (int j = 0; j <(a-i); j++) {
                     cout << ' ';
-
+                    
                 }
-
+                
                 for (int j = (a-i); j<=a+i ; j++) {
                     cout << "*";
                 }
-
-
+                
+                
                 cout<<endl;
             }
         }
         break;
-
+        
     case 4:
         cout<<"PROBLEMA #6"<<endl;
         cout<<"NUMERO DE EULER"<<endl;
@@ -220,7 +220,7 @@ int main()
         x+=1;//Sumo 1 que corresponde a 1/0!
         cout<<endl<<"NUMERO DE EULER APROX: "<<x<<endl;
         break;
-
+        
     case 5:
         cout<<"PROBLEMA #7"<<endl;
         cout<<"FIBONACCI   "<<endl;
@@ -228,7 +228,7 @@ int main()
         cin>>a;
         arra5[0]=1;
         arra5[1]=1;
-
+        
         for(x=1;x<=a;x++)// Ciclo For para encontrar la susecion de Fibonacci
         {
             arra5[x+1]=arra5[x-1]+arra5[x];
@@ -237,15 +237,15 @@ int main()
                 if((arra5[x+1]%2)==0)// De la lista de Fibonacci encontrada descarto los que nos son PARES
                 {
                     j=j+arra5[x+1];//Variable para sumar los pares
-
+                    
                     ;}
             }
             cout<<endl<<" "<<arra5[x+1];// Imprimo lista Fibonacci
         }
         cout<<endl<<"LA SUMA DE LOS PARES MENORES QUE N ES: "<<j<<endl;
-
+        
         break;
-
+        
     case 6:
         cout<<"PROBLEMA #8"<<endl;
         cout<<"SUMA DE MULTIPLOS A y B MENORES QUE C "<<endl;
@@ -256,7 +256,7 @@ int main()
         cout<<endl<<"INGRESE C: ";
         cin>>c;
         n=1;
-
+        
         while(a*n<c)//Encuentro multiplos de A
         {
             arra2[n]=a*n;
@@ -268,33 +268,33 @@ int main()
             arra3[e]=b*e;
             e++;
         }
-
+        
         if(n>e)j=n; //Cual de los dos tiene mayor cantidad de elementos
         else j=e;
-
+        
         for(i=1;i<j;i++) // Ciclo For para buscar multiplos comunos y descartarlos
         {    arra4[i]=arra2[i];
-
+            
             for(d=1;d<j;d++){
-
+                
                 if(arra4[i]==arra3[d])arra3[d]=0;
-
-
+                
+                
             }
         }
         for(i=1;i<n;i++)// imprimo multimos de A con el formato respectivo
         {if(arra2[i]!=0)cout<<arra2[i]<<"+";
             x+=arra2[i];// Sumo multiplos A
         }
-
+        
         for(i=1;i<e;i++)// imprimo multimos de B con el formato respectivo
         {
             if(arra3[i]!=0)cout<<arra3[i]<<"+";
             x+=arra3[i];// Sumo multiplos B
         }
         cout<<'\b'; // Borro un + que me queda sobrando
-
-
+        
+        
         cout<<"="<<x<<endl; // Imprimo resultado de la suma
         break;
     case 7:
@@ -309,22 +309,22 @@ int main()
             ++count;
             temp%=10;
             arra5[count]=temp;
-
+            
         }
         //SUMO CADA NUMERO ELEVADO A SU RESPECTIVA POTENCIA
         for(i=count;i>0;i--)
         {
             y=y+elevar(arra5[i],arra5[i]);
-
-
+            
+            
         }
         //IMPRIMO EN PANTALLA
         cout<<"-------------------"<<endl;
         cout<<"---RESULTADO: "<<y<<"---"<<endl;
         cout<<"-------------------"<<endl;
-
+        
         break;
-
+        
     case 8:
         cout<<"PROBLEMA #10"<<endl;
         cout<<"ENESIMO PRIMO"<<endl;
@@ -337,35 +337,35 @@ int main()
                 if(c%i==0)
                     n++;
             }
-
+            
             if(n==2)a--;// Disminuye contador cuando es primo
             e=c;//alamceno el Primo hayado
             n=0;//Restauro contador
             c+=1;
             if(a==0)b=1;//termina programa cuando encuentra el Nsimo Primo
-
+            
         }
         cout<<endl<<"ENESIMO # PRIMO: "<<e<<endl;
         break;
-
+        
     case 9:
         cout<<"PROBLEMA #11"<<endl;
         cout<<"ENESIMO PRIMO"<<endl;
-
+        
         break;
-
+        
     case 10:
         cout<<"PROBLEMA #16"<<endl;
         cout<<"SERIE DE COLLATZ"<<endl;
         cin>>a;
         j=a-1;
         a=j;
-
+        
         while(!c)
         {if(a!=1)
             {
                 a=collatz(a,&ptr);
-
+                
             }
             else
             {cout<<endl<<"------------"<<endl;
@@ -380,16 +380,16 @@ int main()
                 if(a==1)c=1;
             }
         }
-
+        
         cout<<endl<<"TERMINAMOS, LA SERIE MAS GRANDE FUE: "<<d<<" CON LA SEMILLA: "<<w<<endl;
         while(w!=1){
-        w=collatz(w,&ptr);
+            w=collatz(w,&ptr);
         }
         break;
-
+        
     }
-
-
+    
+    
 }
 
 int elevar(int B,int P)// Funcion para elevar B^P
@@ -397,7 +397,7 @@ int elevar(int B,int P)// Funcion para elevar B^P
     int res=1;
     for (int a=0;a<P;++a)
         res*=B;
-
+    
     return res;
 }
 
@@ -407,7 +407,7 @@ int fac(int m)// Funcion que me retorna el Factorial del numero solicitado
     {
         n*=i;
     }
-
+    
     return n;
 }
 
@@ -415,10 +415,10 @@ int collatz(int coll, int *pt)
 {
     if(coll%2)
     {
-
+        
         cout<<"impar "<<coll<<endl;
         coll=(3*coll)+1;
-
+        
         *pt+=1;
     }
     else
