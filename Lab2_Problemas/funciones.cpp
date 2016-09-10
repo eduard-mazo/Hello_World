@@ -16,5 +16,5 @@ void imprimir(){
         c=nombres[i]-48;
         b+=c;
     }
-    cout<<"SUMA DE CADA UNO DE LOS STRING: "<<b<<endl;
+    cout<<"SUMA DE CADA UNO DE LOS CHAR: "<<b<<endl;
 }
