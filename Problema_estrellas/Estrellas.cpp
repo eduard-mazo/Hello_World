@@ -25,10 +25,10 @@ int main()
     f=(int)Encuentre[0]-48;
     c=(int)Encuentre[2]-48;
 
-resultado=buscar(lista,f,c);
-if(resultado)cout<<endl<<"ES UNA ESTRELLA: "<<"("<<f<<","<<c<<")"<<endl;
-else cout<<endl<<"NO ES UNA ESTRELLA: "<<"("<<f<<","<<c<<")"<<endl;
+    resultado=buscar(lista,f,c);
 
+    if(resultado)cout<<endl<<"ES UNA ESTRELLA: "<<"("<<f<<","<<c<<")"<<endl;
+    else cout<<endl<<"NO ES UNA ESTRELLA: "<<"("<<f<<","<<c<<")"<<endl;
 
 
 
@@ -36,6 +36,8 @@ else cout<<endl<<"NO ES UNA ESTRELLA: "<<"("<<f<<","<<c<<")"<<endl;
 
 void imprimir(int**lista)
 {
+
+
     for(int i=0;i<row;i++)
     {
         for(int j=0; j<col;j++)
@@ -49,13 +51,13 @@ void imprimir(int**lista)
 
 bool buscar(int**lista,int x,int y)
 {
-   int temp=0;
-temp=*(*(lista+x)+y)\
-     +*(*(lista+(x-1))+y)+*(*(lista+(x+1))+y)\
-     +*(*(lista+x)+(y-1))+*(*(lista+x)+(y+1));
-temp/=5;
-if(temp>=6)return true;
-return false;
+    int temp=0;
+    temp=*(*(lista+x)+y)\
+            +*(*(lista+(x-1))+y)+*(*(lista+(x+1))+y)\
+            +*(*(lista+x)+(y-1))+*(*(lista+x)+(y+1));
+    temp/=5;
+    if(temp>=6)return true;
+    return false;
 }
 
 void rellenar(int**lista)
