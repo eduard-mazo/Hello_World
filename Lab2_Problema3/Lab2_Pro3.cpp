@@ -1,9 +1,25 @@
 #include <iostream>
-
+#include <string>
+#include "funciones.h"
 using namespace std;
 
-int main(int argc, char *argv[])
+
+bool flg=false;
+int x=0;
+int y=0;
+string a,b;
+
+int main()
 {
-    cout << "Hello World!" << endl;
-    return 0;
+test();
+
+    getline(cin,a);
+    getline(cin,b);
+
+    tamano(a,b,&x,&y);
+    flg=compara(a,b,&x,&y);
+    if(flg)cout<<"IGUALES"<<endl;
+    else cout<<"DIFERENTES"<<endl;
+
 }
+

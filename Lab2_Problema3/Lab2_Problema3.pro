@@ -4,4 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    Lab2_Pro3.cpp
+    Lab2_Pro3.cpp \
+    funciones.cpp
+
+HEADERS += \
+    funciones.h
