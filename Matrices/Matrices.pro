@@ -5,7 +5,7 @@ CONFIG -= qt
 
 SOURCES += \
     funciones.cpp \
-    cine.cpp
+    Lab2_Pro11.cpp
 
 HEADERS += \
     funciones.h
