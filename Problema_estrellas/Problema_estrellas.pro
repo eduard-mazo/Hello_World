@@ -4,4 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    Estrellas.cpp
+    Lab2_Pro13.cpp \
+    funciones.cpp
+
+HEADERS += \
+    funciones.h

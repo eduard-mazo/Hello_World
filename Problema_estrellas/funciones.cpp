@@ -1,38 +1,8 @@
 #include <iostream>
 #define row 6
 #define col 8
-void rellenar(int**);
-void imprimir(int**);
-bool buscar(int**,int,int);
+
 using namespace std;
-
-int main()
-{
-    bool resultado=false;
-    int **lista;
-    lista= new int*[row];
-    for(int i=0;i<row;i++)
-        lista[i]= new int[col];
-
-    rellenar(lista);
-
-    imprimir(lista);
-
-    cout<<endl<<"INGRESE LA POSICION I - J, SEPARADAS UN ESPACIO PARA COMENZAR EL ANALISIS: ";
-    string Encuentre;
-    getline(cin,Encuentre);
-    int f,c;
-    f=(int)Encuentre[0]-48;
-    c=(int)Encuentre[2]-48;
-
-    resultado=buscar(lista,f,c);
-
-    if(resultado)cout<<endl<<"ES UNA ESTRELLA: "<<"("<<f<<","<<c<<")"<<endl;
-    else cout<<endl<<"NO ES UNA ESTRELLA: "<<"("<<f<<","<<c<<")"<<endl;
-
-
-
-}
 
 void imprimir(int**lista)
 {
@@ -49,15 +19,22 @@ void imprimir(int**lista)
     }
 }
 
-bool buscar(int**lista,int x,int y)
+void buscar(int**lista)
 {
+
+    string Encuentre;
+    getline(cin,Encuentre);
+    int x,y;
+    x=(int)Encuentre[0]-48;
+    y=(int)Encuentre[2]-48;
     int temp=0;
     temp=*(*(lista+x)+y)\
             +*(*(lista+(x-1))+y)+*(*(lista+(x+1))+y)\
             +*(*(lista+x)+(y-1))+*(*(lista+x)+(y+1));
     temp/=5;
-    if(temp>=6)return true;
-    return false;
+    if(temp>=6)cout<<endl<<"ES UNA ESTRELLA: "<<"("<<x<<","<<y<<")"<<endl;
+    else cout<<endl<<"NO ES UNA ESTRELLA: "<<"("<<x<<","<<y<<")"<<endl;
+
 }
 
 void rellenar(int**lista)
