@@ -14,6 +14,6 @@ void upcase()
 
         i++;
     }
-cout<<endl<<"\tUPPERCASE:\t"<<letras<<endl;
+cout<<endl<<"\tUPPERCASE:\t"<<letras<<endl<<endl;
 
 }
