@@ -4,4 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    Permuta.cpp
+    funciones.cpp \
+    Lab2_Pro18.cpp
+
+HEADERS += \
+    funciones.h
