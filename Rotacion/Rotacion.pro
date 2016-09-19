@@ -4,4 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    Rotacion.cpp
+    funciones.cpp \
+    Lab2_Pro14.cpp
+
+HEADERS += \
+    funciones.h

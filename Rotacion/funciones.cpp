@@ -1,13 +1,9 @@
 #include <iostream>
 
 using namespace std;
-void imprimir(int**);
-int main()
+
+void imprimir(int**lista)
 {
-    int **lista;
-    lista=new int*[5];
-    for(int i=0;i<5;i++)
-        lista[i]=new int[5];
     int a=1;
     for(int i=0;i<5;i++)
     {
@@ -17,11 +13,8 @@ int main()
             a++;
         }
     }
-    imprimir(lista);
-}
 
-void imprimir(int**lista)
-{bool fsm=true;
+    bool fsm=true;
     int rot=0;
     while(fsm){
         switch (rot)
@@ -83,7 +76,7 @@ void imprimir(int**lista)
                 }
                 cout<<endl;
             }
-           fsm=false;
+            fsm=false;
             break;
 
         }
