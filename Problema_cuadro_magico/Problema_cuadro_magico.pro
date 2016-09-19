@@ -4,4 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    cuadro_magico.cpp
+    funciones.cpp \
+    Lab2_Pro12.cpp
+
+HEADERS += \
+    funciones.h

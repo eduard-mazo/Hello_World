@@ -1,27 +1,7 @@
 #include <iostream>
 #define clear() cout<<"\033[H\033[J";
-
 using namespace std;
-void imprimir(int**, int, bool);
-void rellenar(int**,int);
-bool revisar(int**,int);
-int main()
-{
 
-    int dim;
-    cout<<"\tCUADRADO MAGICO"<<endl<<endl<<"INGRESE LA DIMENSION DE SU MATRIZ ";
-    cin>>dim;
-    int **lista;
-    lista=new int*[dim];  //filas
-    for(int i=0;i<dim;i++)
-        lista[i]=new int[dim]; //columnas
-    cin.ignore();
-    rellenar(lista,dim);
-    bool check=false;
-    check=revisar(lista,dim);
-    imprimir(lista,dim,check);
-
-}
 bool revisar(int**lista,int dim)
 {
     int row[dim];
@@ -59,11 +39,12 @@ bool revisar(int**lista,int dim)
 
 
     }
- if(test==dim)return true;
- else return false;
+    if(test==dim)return true;
+    else return false;
 }
 void rellenar(int**lista,int dim)
 {
+    cout<<"INGRESE LOS VALORES DISTANCIADOS UN ESPACIO EJM (1 2 3): "<< endl;
     bool b=true;
     int i=0;
 
