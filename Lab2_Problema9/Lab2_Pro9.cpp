@@ -1,9 +1,18 @@
 #include <iostream>
-
+#include "funciones.h"
 using namespace std;
 
-int main(int argc, char *argv[])
+int main()
 {
-    cout << "Hello World!" << endl;
-    return 0;
+    int a=0;
+    int x=0;
+
+    string numero;
+    cin>>a;
+    cin.ignore();
+    getline(cin,numero);
+    tamano(numero,&x);
+    almacenar(numero,x,a);
+
 }
+
