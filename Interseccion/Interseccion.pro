@@ -4,4 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    Interseccion.cpp
+    funciones.cpp \
+    Lab2_Pro15.cpp
+
+HEADERS += \
+    funciones.h
