@@ -41,38 +41,62 @@ private:
     int report[3][10];
 public:
     void Set_team();
-    void Set_marcador();
+    void Set_marcador(); // DEFINO EL MARCADOR Y ALMACENO GOLES TOTALES
     void Get_marcador(int*);
+
+
 };
 
 int main()
-{   int marcador[2];
+{  int marcador[2];
     Partido clasico;
-
     //clasico.Set_team();
     clasico.Set_marcador();
     clasico.Get_marcador(marcador);
     cout<<marcador[0]<<" "<<marcador[1];
+
+
 }
+
+
 void Partido::Get_marcador(int*resul)
 {
-    *resul=marcador[0];
-    *(resul+1)=marcador[1];
+    *resul=*marcador;
+    *(resul+1)=*(marcador+1);
 }
 
 void Partido::Set_marcador()
 {
     srand(time(NULL));
     int temp=rand()%10;
-    int temp2;
+    int mientras=90;
+    int temp2,temp3,temp4=1;
     for(int i=0;i<temp;i++)
     {
         temp2=rand()%2;
+        temp3=rand()%11;
+        temp4=rand()%mientras+temp4;
+
+        mientras-=temp4;
+
         if(temp2)
-            marcador[1]++;
+        {
+            *(marcador+1)+=1;
+            report[0][i]=temp2;// EQUIPO QUE METE GOL
+            report[1][i]=temp3;// JUGADOR QUE METE GOL
+            report[2][i]=temp4;// MINUTO
+        }
+
         else
-            marcador[0]++;
+        {
+            *marcador+=1;
+            report[0][i]=temp2;// EQUIPO QUE METE GOL
+            report[1][i]=temp3;// JUGADOR QUE METE GOL
+            report[2][i]=temp4;// MINUTO
+        }
     }
+
+    Gol=temp;
 }
 
 void Partido::Set_team()
