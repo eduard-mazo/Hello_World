@@ -10,13 +10,7 @@ class Jugador{
 private:
     char nameJ[10]={0};
 public:
-    void set_name(char* nombre){
-        int i=0;
-        while(*(nombre+i)!=0){
-            *(nameJ+i)=*(nombre+i);
-            i++;
-        }
-    }
+    void set_name(char* nombre);
     void get_name(char* nombre);
 };
 
@@ -36,33 +30,58 @@ class Partido{
 private:
     Equipo equipos[2];
     int marcador[2]={0,0};
-    int duracion;
     int Gol;
     int report[3][10];
 public:
     void Set_team();
     void Set_marcador(); // DEFINO EL MARCADOR Y ALMACENO GOLES TOTALES
-    void Get_marcador(int*);
+    int* Get_marcador();
+    void Set_values();
+    void miPartido();
 
 
 };
 
 int main()
-{  int marcador[2];
+{
     Partido clasico;
-    //clasico.Set_team();
-    clasico.Set_marcador();
-    clasico.Get_marcador(marcador);
-    cout<<marcador[0]<<" "<<marcador[1];
+ clasico.miPartido();
+ cout<<"EL ENCUENTRO FINALIZO: ["<<clasico.Get_marcador()[0]<<","<<clasico.Get_marcador()[1]\
+    <<"]"<<endl;
 
+}
+void Partido::miPartido()
+{
+    Set_values();
+    Set_team();
+    Set_marcador();
 
 }
 
-
-void Partido::Get_marcador(int*resul)
+void Partido::Set_values()
 {
-    *resul=*marcador;
-    *(resul+1)=*(marcador+1);
+    Gol=0;
+    for(int i=0;i<3;i++)
+    {
+        for(int j=0;j<10;j++)
+        {
+            *(*(report+i)+j)=0;
+        }
+    }
+}
+
+void Jugador::set_name(char* nombre)
+{
+    int i=0;
+    while(*(nombre+i)!=0){
+        *(nameJ+i)=*(nombre+i);
+        i++;
+    }
+}
+
+int* Partido::Get_marcador()
+{
+    return marcador;
 }
 
 void Partido::Set_marcador()
@@ -75,16 +94,15 @@ void Partido::Set_marcador()
     {
         temp2=rand()%2;
         temp3=rand()%11;
-        temp4=rand()%mientras+temp4;
-
-        mientras-=temp4;
+        temp4=rand()%mientras;
+        mientras=temp4;
 
         if(temp2)
         {
             *(marcador+1)+=1;
-            report[0][i]=temp2;// EQUIPO QUE METE GOL
+            *(*(report+0)+i)/*[0][i]*/=temp2;// EQUIPO QUE METE GOL
             report[1][i]=temp3;// JUGADOR QUE METE GOL
-            report[2][i]=temp4;// MINUTO
+            report[2][(temp-1)-i]=temp4;// MINUTO
         }
 
         else
@@ -92,7 +110,7 @@ void Partido::Set_marcador()
             *marcador+=1;
             report[0][i]=temp2;// EQUIPO QUE METE GOL
             report[1][i]=temp3;// JUGADOR QUE METE GOL
-            report[2][i]=temp4;// MINUTO
+            report[2][(temp-1)-i]=temp4;// MINUTO
         }
     }
 
