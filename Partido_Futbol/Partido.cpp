@@ -24,6 +24,9 @@ public:
     void Set_name(char* nombre);
     void player_names();
     void Get_team_name(char *nombre);
+    void Get_player_name(char *nombre,int num){
+        jugadores[num].get_name(nombre);
+    }
 };
 
 class Partido{
@@ -38,9 +41,8 @@ public:
     void Set_marcador(); // DEFINO EL MARCADOR Y ALMACENO GOLES TOTALES
     int* Get_marcador();
     void Set_values();
+    void Imprimir();
     void miPartido();
-
-
 };
 
 int main()
@@ -54,8 +56,9 @@ int main()
 void Partido::miPartido()
 {
     Set_values();
-    // Set_team();
+    Set_team();
     Set_marcador();
+    Imprimir();
 
 }
 
@@ -118,11 +121,6 @@ void Partido::Set_marcador()
 
         }
     }
-    //    for(int i=0;i<temp;i++){
-    //        *(*(report+0)+i)/*[0][i]*/=tempreport[0][i];// EQUIPO QUE METE GOL
-    //        *(*(report+1)+i)=tempreport[1][i];// JUGADOR QUE METE GOL
-    //        *(*(report+2)+i)=tempreport[2][i];// MINUTO
-    //    }
 
     Gol=temp;
 }
@@ -183,5 +181,29 @@ void Equipo::player_names()
 
 }
 
+void Partido::Imprimir()
+{
+    clear();
+    char hola[10]={0};
+    char hola2[10]={0};
+    cout<<"\tJUGADOR\t\tEQUIPO\t\tMINUTO"<<endl<<endl;
+
+    int a=0,b=0;
+    for(int i=0;i<Gol;i++)
+    {
+        hola[10]={0};
+        hola2[10]={0};
+
+        a=report[0][i];
+        equipos[a].Get_team_name(hola);
+        b=report[1][i];
+        equipos[a].Get_player_name(hola2,b);
+
+        cout<<"\t"<<hola2<<"\t\t"<<hola<<"\t\t"<<report[2][i]<<endl;
+
+    }
+
+
+}
 
 
