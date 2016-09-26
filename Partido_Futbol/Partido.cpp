@@ -202,7 +202,7 @@ void Partido::Imprimir()
         cout<<"\t"<<hola2<<"\t\t"<<hola<<"\t\t"<<report[2][i]<<endl;
 
     }
-
+cout<<endl<<endl;
 
 }
 
